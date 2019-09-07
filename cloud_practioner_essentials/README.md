@@ -8,11 +8,11 @@
     + Guide to AWS services
     + Overview of cloud architecture
     + I should be able to...
-           + Define what the AWS cloud is and its global infrastructure;
-           + Describe basic AWS Cloud architectural principles;
-           + Understand the AWS Cloud value proposition;
-           + Talk about key AWS services and their basic use cases;
-           + Define the billing, account management, and pricing models;
-           + Identify sources of documentation or technical assistance; and
-           + Describe the characteristics of deploying and operating in the AWS Cloud.
+        + Define what the AWS cloud is and its global infrastructure;
+        + Describe basic AWS Cloud architectural principles;
+        + Understand the AWS Cloud value proposition;
+        + Talk about key AWS services and their basic use cases;
+        + Define the billing, account management, and pricing models;
+        + Identify sources of documentation or technical assistance; and
+        + Describe the characteristics of deploying and operating in the AWS Cloud.
     + Course should take about 6 hours to complete.
