@@ -101,5 +101,74 @@
      + However....
          + If you make changes to a feature using the CLI, it might not be readily viewable from the console when it initially launches.
 
+## Core Services
+
+This module will provide high level information regarding a variety of core services provided by AWS platform, along with their common use cases.
+
+### Elastic Compute Cloud (EC2)
+
+* What is EC2?
+     + It stands for Elastic Compute Cloud (EC2)
+     + The following are a few examples of its use:
+         + Application server;
+         + Web server;
+         + Database server;
+         + Game server;
+         + Mail server;
+         + Media server;
+         + Catalog server;
+         + File server;
+         + Computing server;
+         + Proxy server; and
+         + etc.
+     + Cloud refers to the fact that these are cloud hosted resources
+     + Elastic refers to the fact that, if properly configured, you can increase or decrease the amount of servers required by an application automatically according to the current demands of the application.
+
+* Formally known as Amazon EC2 Instances
+    + Pay-as-you-go: you only pay for running instances and the time they run.
+    + Broad selection of Hardware/Software
+    + Global hosting
+    + For more info, see: https://aws.amazon.com/ec2/
+
++ Product Demonstration
+    + Login to AWS Console;
+    + Choose a region where we are going to host our instance;
+         + Note: teacher selected Oregon because they said it was close by. Taking that to mean you should select a region nearest your customers.
+    + Launch EC2 wizard;
+    + Select Amazon Machine Image (AMI) (Software);
+        + An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch your instance. You can select an AMI provided by AWS, our user community, or the AWS Marketplace; or you can select one of your own AMIs.
+        + The tutorial selected "Amazon Linux AMI (2017)"
+    + Select instance type (Hardware);
+        + Amazon EC2 provides a wide selection of instance types optimized to fit different use cases. Instances are virtual servers that can run applications. They have varying combinations of CPU, memory, storage, and networking capacity, and give you the flexibility to choose the appropriate mix of resources for your applications.
+        + The tutorial selected the "t2.micro" instance type
+    + Configure network;
+        + Configure the instance to suit your requirements. You can launch multiple instances from the same AMI, request Spot instances to take advantage of the lower pricing, assign an access management role to the instance, etc.
+        + The tutorial selected the default "Network", "Subnet", and "Auto-assign Public IP" which gives us a [DHCP](https://kb.iu.edu/d/adov) address
+    + Configure storage;
+        + Your instance will be launched with the following storage device settings. You can attach additional EBS volumes and instance store volumes to your instance, or edit the settings of the root volume. You can also attach additional EBS volumes after launching an instance, but not instance store volumes. For more information, see here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html.
+    + Configure tags;
+        + A tag consists of a case-sensitive key-value pair. For example, you could define a tag with `key = Name` and `value = Webserver`. A copy of a tag can be applied to volumes, instances, or both. Tags will be applied to all instances and volumes. For more information, see here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html.
+        + By default, an EC2 instance is given a rather cryptic identifier. This is known as the 'Instance ID'.
+        + Tags allow us to give it a friendlier name. This is known as the EC2 'Name'.
+    + Configure security group; and
+        + A security group is a set of firewall rules that control the traffic for your instance. On this page, you can add rules to allow specific traffic to reach your instance. For example, if you want to set up a web server and allow Internet traffic to reach your instance, add rules that allow unrestricted access to the HTTP and HTTPS ports. You can create a new security group or select from an existing one below. For more information, see here: https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/security-group-rules-reference.html.
+        + The tutorial created a new security group. Named it `ssh-http`. And added two rules: one type for SSH and HTTP.
+    + Configure key pairs that allow us to connect to the instance after we launch it;
+        + A key pair consists of a **public key** that AWS stores, and a **private key** that you store. Together, they allow you to connect to your instance securely.
+        + For Windows AMIs, the private key is required to obtain the password used to log into your instance.
+        + For Linux AMIs, the private key file allows you to securely SSH into your instance.
+        + Name the key-pair name and download the `<key-pair-name>.pem` file locally.
+        + Note: at this point, the tutorial does nothing with the `<key-pair-name>.pem` file.
+    + Ah: the tutorial is using Windows. They launch PuTTy (`putty.exe`).
+        + They copy the Public DNS (IPv4) name into the IP Address text box. It looks like `ec2-35-160-128-192.us-west-2.compute.amazonaws.com`. They paste that url after typing `ec2-user@<public-dns-url>`.
+        + They leave the port as `22`.
+        + They leave the connection type as `SSH`
+        + Error! It doesn't open because we haven't configured the private key yet.
+        + Relaunches `PuTTy` and recopies the same DNS url into the "Host Name" text box: `ec2-user@<public-dns-url>`.
+        + From the left-hand side, they click on `SSH` -> `Auth`. They then browse for the private `<key-pair-name.pem` file (i.e. the file that stores the private key)
+        + At this point, the teacher mentions that Windows requires the conversion of a `.pem` file to a `.ppk` file. They launch `puttygen.exe` and convert the `.pem` file to a `.ppk` file.
+        + After the conversion, they went back to `putty.exe`, identified the location of the newly created `<key-pair-name.ppk` file, and were able to successfully launch their EC2 instance.
+
+
 
 
